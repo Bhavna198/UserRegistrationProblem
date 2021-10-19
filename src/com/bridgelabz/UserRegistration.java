@@ -23,6 +23,10 @@ public class UserRegistration {
         String mobilenumber = sc.next();
         Is_Valid_MobileNumber(mobilenumber);
 
+        System.out.println("Enter the password");
+        String password = sc.next();
+        Is_Valid_Password(mobilenumber);
+
     }
 
 
@@ -91,6 +95,7 @@ public class UserRegistration {
 
     /**
      * Use Case 4
+     *
      * @param mobileNumber
      */
     public static void Is_Valid_MobileNumber(String mobileNumber) {
@@ -109,5 +114,27 @@ public class UserRegistration {
             System.out.println(mobileNumber + " Invalid Mobile Number");
     }
 
+    /**
+     * Use Case 5
+     * As a User need to
+     * follow predefined
+     *Password rules.
+     */
+    public static void Is_Valid_Password(String password) {
+
+        boolean passwordValid;
+        String passRegex= "\"^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$";
+        Pattern p = Pattern.compile(passRegex);
+        if (passRegex == null) {
+            passwordValid = false;
+        }
+        Matcher matcherObject = p.matcher(password);
+        passwordValid= matcherObject.matches();
+
+        if (passwordValid)
+            System.out.println(password + " Valid  Password");
+        else
+            System.out.println(password + " Invalid Password");
+    }
 }
 
