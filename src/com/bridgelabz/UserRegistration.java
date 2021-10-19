@@ -25,7 +25,12 @@ public class UserRegistration {
 
         System.out.println("Enter the password");
         String password = sc.next();
-        Is_Valid_Password(mobilenumber);
+        Is_Valid_Password(password);
+
+        System.out.println("Enter the password");
+        String pass = sc.next();
+        is_Valid_PasswordRule2(pass);
+
 
     }
 
@@ -78,7 +83,7 @@ public class UserRegistration {
      */
     public static void is_valid_EmailId(String emailId) {
         boolean validEmailId;
-        String emailRegex = "^[0-9]{2}\\s{1}[0-9]{10}$]";
+        String emailRegex = "^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$";
 
         Pattern p = Pattern.compile(emailRegex);
         if (emailId == null)
@@ -101,7 +106,7 @@ public class UserRegistration {
     public static void Is_Valid_MobileNumber(String mobileNumber) {
 
         boolean mobileNumberValid;
-        Pattern p = Pattern.compile(("^\\d{10}$"));
+        Pattern p = Pattern.compile("^[0-9]{2}\\s{1}[0-9]{10}$");
         if (mobileNumber == null) {
             mobileNumberValid = false;
         }
@@ -118,23 +123,41 @@ public class UserRegistration {
      * Use Case 5
      * As a User need to
      * follow predefined
-     *Password rules.
+     * Password rules.
      */
     public static void Is_Valid_Password(String password) {
-
         boolean passwordValid;
-        String passRegex= "\"^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$";
+        String passRegex = "^[a-zA-Z0-9]*).{8,}$";
         Pattern p = Pattern.compile(passRegex);
         if (passRegex == null) {
             passwordValid = false;
         }
-        Matcher matcherObject = p.matcher(password);
-        passwordValid= matcherObject.matches();
+        Matcher m = p.matcher(password);
+        passwordValid = m.matches();
 
         if (passwordValid)
             System.out.println(password + " Valid  Password");
         else
             System.out.println(password + " Invalid Password");
+    }
+
+    /**
+     * Use Case 6
+     */
+    public static void is_Valid_PasswordRule2(String pass) {
+        boolean passwordValid;
+        String passRegex = "^(?=.*[A-Z]$)";
+        Pattern p = Pattern.compile(passRegex);
+        if (passRegex == null) {
+            passwordValid = false;
+        }
+        Matcher m = p.matcher(pass);
+        passwordValid = m.matches();
+
+        if (passwordValid)
+            System.out.println(pass + " Valid  Password");
+        else
+            System.out.println(pass + " Invalid Password");
     }
 }
 
