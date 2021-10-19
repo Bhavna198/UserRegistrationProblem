@@ -15,6 +15,10 @@ public class UserRegistration {
         String lastName = sc.next();
         is_valid_Last_Name(lastName);
 
+        System.out.println("Enter the Mail Id");
+        String emailId = sc.next();
+        is_valid_EmailId(emailId);
+
     }
 
 
@@ -29,7 +33,7 @@ public class UserRegistration {
         firstNamevalid = m.matches();
 
         if (firstNamevalid)
-            System.out.println(firstName + " Vaild First Name");
+            System.out.println(firstName + " Valid First Name");
         else
             System.out.println(firstName + " Invalid First Name");
     }
@@ -52,9 +56,36 @@ public class UserRegistration {
         lastNamevalid = m.matches();
 
         if (lastNamevalid)
-            System.out.println(lastName + " Vaild Last Name");
+            System.out.println(lastName + " Valid Last Name");
         else
             System.out.println(lastName + " Invalid Last Name");
+    }
+
+    /**
+     * Use Case 3
+     * As a User need to enter a valid email.
+     * - E.g. abc.xyz@bl.co.in - Email has 3 mandatory parts (abc, bl
+     * & co) and 2 optional (xyz & in) with
+     * precise @ and . positions
+     */
+    public static void is_valid_EmailId(String emailId) {
+        boolean validEmailId;
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern p = Pattern.compile(emailRegex);
+        if (emailId == null)
+            validEmailId = false;
+
+        Matcher m = p.matcher(emailId);
+        validEmailId = m.matches();
+
+        if (validEmailId)
+            System.out.println(emailId + " Valid EmailId");
+        else
+            System.out.println(emailId + " Invalid EmailId");
     }
 }
 
