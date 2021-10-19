@@ -19,6 +19,10 @@ public class UserRegistration {
         String emailId = sc.next();
         is_valid_EmailId(emailId);
 
+        System.out.println("Enter the Mobile Number");
+        String mobilenumber = sc.next();
+        Is_Valid_MobileNumber(mobilenumber);
+
     }
 
 
@@ -70,10 +74,7 @@ public class UserRegistration {
      */
     public static void is_valid_EmailId(String emailId) {
         boolean validEmailId;
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
+        String emailRegex = "^[0-9]{2}\\s{1}[0-9]{10}$]";
 
         Pattern p = Pattern.compile(emailRegex);
         if (emailId == null)
@@ -87,5 +88,26 @@ public class UserRegistration {
         else
             System.out.println(emailId + " Invalid EmailId");
     }
+
+    /**
+     * Use Case 4
+     * @param mobileNumber
+     */
+    public static void Is_Valid_MobileNumber(String mobileNumber) {
+
+        boolean mobileNumberValid;
+        Pattern p = Pattern.compile(("^\\d{10}$"));
+        if (mobileNumber == null) {
+            mobileNumberValid = false;
+        }
+        Matcher matcherObject = p.matcher(mobileNumber);
+        mobileNumberValid = matcherObject.matches();
+
+        if (mobileNumberValid)
+            System.out.println(mobileNumber + " Valid  Mobile Number \n");
+        else
+            System.out.println(mobileNumber + " Invalid Mobile Number");
+    }
+
 }
 
