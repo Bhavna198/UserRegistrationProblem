@@ -39,7 +39,82 @@ public class UserRegistration {
         String pas = sc.next();
         is_Valid_PasswordRule4(pas);
 
+        sc.close();
 
+        emailId = "abc@bridgelabz.co.in";
+        is_valid_EmailId(emailId);
+        emailId = "abc@gmail.com.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@yahoo.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@1.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc-100@yahoo.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc.100@yahoo.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc111@abc.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc-100@abc.net";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc.100@abc.com.au";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc+100@gmail.com";
+        is_valid_EmailId(emailId);
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        System.out.println("---------- Invalid Emails ----------");
+
+        emailId = ".abc@abc.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@.com.my";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@abc@gmail.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc()*@gmail.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc..2002@gmail.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc.@gmail.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc123@.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc123@.com.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc123@gmail.a";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@%*.com";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@gmail.com.1a";
+        is_valid_EmailId(emailId);
+
+        emailId = "abc@gmail.com.aa.au";
+        is_valid_EmailId(emailId);
+
+        System.out.println("Use Registration Form Filled");
+        System.out.println("Thank You");
     }
 
 
@@ -114,7 +189,7 @@ public class UserRegistration {
     public static void Is_Valid_MobileNumber(String mobileNumber) {
 
         boolean mobileNumberValid;
-        Pattern p = Pattern.compile("^[0-9]{2}\\s{1}[0-9]{10}$");
+        Pattern p = Pattern.compile("^[0-9]{2}\\s[0-9]{10}$");
         if (mobileNumber == null) {
             mobileNumberValid = false;
         }
@@ -184,6 +259,7 @@ public class UserRegistration {
         else
             System.out.println(passw + " Invalid Password");
     }
+
     /**
      * Use case 8
      */
