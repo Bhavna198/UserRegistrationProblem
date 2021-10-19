@@ -11,6 +11,10 @@ public class UserRegistration {
         String firstName = sc.next();
         is_valid_First_Name(firstName);
 
+        System.out.println("Enter the Last Name");
+        String lastName = sc.next();
+        is_valid_Last_Name(lastName);
+
     }
 
 
@@ -30,6 +34,27 @@ public class UserRegistration {
             System.out.println(firstName + " Invalid First Name");
     }
 
+    /**
+     * Use Case 2
+     * (^ symbol used for validating start char starts from A [A-Z])
+     *
+     * @param lastName
+     */
 
+    public static void is_valid_Last_Name(String lastName) {
+        boolean lastNamevalid;
+        String regex = "^[A-Z][a-z]+$";
+        Pattern p = Pattern.compile(regex);
+        if (lastName == null) {
+            lastNamevalid = false;
+        }
+        Matcher m = p.matcher(lastName);
+        lastNamevalid = m.matches();
+
+        if (lastNamevalid)
+            System.out.println(lastName + " Vaild Last Name");
+        else
+            System.out.println(lastName + " Invalid Last Name");
+    }
 }
 
