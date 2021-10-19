@@ -31,6 +31,10 @@ public class UserRegistration {
         String pass = sc.next();
         is_Valid_PasswordRule2(pass);
 
+        System.out.println("Enter the password");
+        String passw = sc.next();
+        is_Valid_PasswordRule3(passw);
+
 
     }
 
@@ -127,7 +131,7 @@ public class UserRegistration {
      */
     public static void Is_Valid_Password(String password) {
         boolean passwordValid;
-        String passRegex = "^[a-zA-Z0-9]*).{8,}$";
+        String passRegex = "^[a-zA-Z0-9]*.{8,}$";
         Pattern p = Pattern.compile(passRegex);
         if (passRegex == null) {
             passwordValid = false;
@@ -158,6 +162,23 @@ public class UserRegistration {
             System.out.println(pass + " Valid  Password");
         else
             System.out.println(pass + " Invalid Password");
+    }
+    //Use case 7
+
+    public static void is_Valid_PasswordRule3(String passw) {
+        boolean passwordValid;
+        String passRegex = "^(?=.*[0-9]$)";
+        Pattern p = Pattern.compile(passRegex);
+        if (passRegex == null) {
+            passwordValid = false;
+        }
+        Matcher m = p.matcher(passw);
+        passwordValid = m.matches();
+
+        if (passwordValid)
+            System.out.println(passw + " Valid  Password");
+        else
+            System.out.println(passw + " Invalid Password");
     }
 }
 
